@@ -1,0 +1,14 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="flux-header">
+  <template>
+    <header id="header">
+      <h1>todos</h1>
+      <flux-todo-textinput
+        id-value="new-todo"
+        placeholder="What needs to be done?"
+        on-save="_onSave"
+      />
+    </header>
+  </template>
+</dom-module>

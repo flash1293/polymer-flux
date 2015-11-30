@@ -1,0 +1,14 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="flux-todo-app">
+  <template>
+    <div>
+      <flux-header></flux-header>
+      <flux-mainsection
+        all-todos="{{allTodos}}"
+        are-all-complete="{{areAllComplete}}"
+      ></flux-mainsection>
+      <flux-footer all-todos="{{allTodos}}"></flux-footer>
+    </div>
+  </template>
+</dom-module>

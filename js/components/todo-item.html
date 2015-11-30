@@ -1,0 +1,26 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="flux-todo-item">
+  <template>
+    <li
+      class$="{{classNames(todo.complete,isEditing)}}">
+      <div class="view">
+        <input
+          class="toggle"
+          type="checkbox"
+          checked="{{todo.complete}}"
+          on-change="_onToggleComplete"
+        />
+        <label on-dblclick="_onDoubleClick">{{todo.text}}</label>
+        <button class="destroy" on-click="_onDestroyClick" />
+      </div>
+      <template is="dom-if" if="{{isEditing}}">
+        <flux-todo-textinput  
+          class-name="edit"
+          on-save="_onSave"
+          value="{{todo.text}}"
+        />
+      </template>
+    </li>
+  </template>
+</dom-module>
