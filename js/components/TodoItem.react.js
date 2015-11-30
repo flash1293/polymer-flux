@@ -10,7 +10,6 @@
 var React = require('react');
 var ReactPropTypes = React.PropTypes;
 var TodoActions = require('../actions/TodoActions');
-var TodoTextInput = require('./TodoTextInput.react');
 
 var classNames = require('classnames');
 
@@ -35,8 +34,8 @@ var TodoItem = React.createClass({
     var input;
     if (this.state.isEditing) {
       input =
-        <TodoTextInput
-          className="edit"
+        <flux-todo-textinput
+          class-name="edit"
           onSave={this._onSave}
           value={todo.text}
         />;
@@ -85,7 +84,8 @@ var TodoItem = React.createClass({
    * in different ways.
    * @param  {string} text
    */
-  _onSave: function(text) {
+  _onSave: function(event) {
+    var text = event.nativeEvent.detail;
     TodoActions.updateText(this.props.todo.id, text);
     this.setState({isEditing: false});
   },

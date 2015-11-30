@@ -1,0 +1,20 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="flux-footer">
+  <template>
+    <footer id="footer">
+      <span id="todo-count">
+        <strong>
+          <span>{{itemsLeft}}</span>
+        </strong>
+        <span>{{itemsLeftPhrase}}</span>
+      </span>
+      <button
+        hidden$="{{!completed}}"
+        id="clear-completed"
+        on-click="handleCompleteClick">
+        Clear completed (<span>{{completed}}</span>)
+      </button>
+    </footer>
+  </template>
+</dom-module>

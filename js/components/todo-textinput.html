@@ -1,0 +1,16 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="flux-todo-textinput">
+  <template>
+    <input
+      type="text"
+      class$="{{className}}"
+      id="{{idValue}}"
+      placeholder="{{placeholder}}"
+      on-blur="save"
+      on-keydown="onKeyDown"
+      value="{{value::input}}"
+      autoFocus
+    />
+  </template>
+</dom-module>

@@ -12,6 +12,14 @@ var React = require('react');
 
 var TodoApp = require('./components/TodoApp.react');
 
+var footer = require('./components/footer');
+var TodoTextInput = require('./components/todo-textinput');
+
+polymerReact.registerAttribute('all-todos');
+polymerReact.registerAttribute('class-name');
+polymerReact.registerAttribute('id-value');
+polymerReact.registerEvent('save', 'onSave');
+
 React.render(
   <TodoApp />,
   document.getElementById('todoapp')

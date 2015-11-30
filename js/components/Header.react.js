@@ -9,7 +9,6 @@
 
 var React = require('react');
 var TodoActions = require('../actions/TodoActions');
-var TodoTextInput = require('./TodoTextInput.react');
 
 var Header = React.createClass({
 
@@ -20,8 +19,8 @@ var Header = React.createClass({
     return (
       <header id="header">
         <h1>todos</h1>
-        <TodoTextInput
-          id="new-todo"
+        <flux-todo-textinput
+          id-value="new-todo"
           placeholder="What needs to be done?"
           onSave={this._onSave}
         />
@@ -35,7 +34,8 @@ var Header = React.createClass({
    * in different ways.
    * @param {string} text
    */
-  _onSave: function(text) {
+  _onSave: function(event) {
+    var text = event.nativeEvent.detail;
     if (text.trim()){
       TodoActions.create(text);
     }

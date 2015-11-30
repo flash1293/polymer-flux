@@ -12,13 +12,10 @@
  * the TodoStore and passes the new data to its children.
  */
 var polymerReact = require('react-polymer');
-var Footer = require('./Footer.react');
 var Header = require('./Header.react');
 var MainSection = require('./MainSection.react');
 var React = require('react');
 var TodoStore = require('../stores/TodoStore');
-
-polymerReact.registerAttribute('all-todos');
 
 /**
  * Retrieve the current TODO data from the TodoStore
