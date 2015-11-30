@@ -11,12 +11,14 @@
  * This component operates as a "Controller-View".  It listens for changes in
  * the TodoStore and passes the new data to its children.
  */
-
+var polymerReact = require('react-polymer');
 var Footer = require('./Footer.react');
 var Header = require('./Header.react');
 var MainSection = require('./MainSection.react');
 var React = require('react');
 var TodoStore = require('../stores/TodoStore');
+
+polymerReact.registerAttribute('all-todos');
 
 /**
  * Retrieve the current TODO data from the TodoStore
@@ -53,7 +55,7 @@ var TodoApp = React.createClass({
           allTodos={this.state.allTodos}
           areAllComplete={this.state.areAllComplete}
         />
-        <Footer allTodos={this.state.allTodos} />
+      <flux-footer all-todos={JSON.stringify(this.state.allTodos)} />
       </div>
     );
   },

@@ -7,6 +7,7 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+var polymerReact = require('react-polymer');
 var React = require('react');
 
 var TodoApp = require('./components/TodoApp.react');
