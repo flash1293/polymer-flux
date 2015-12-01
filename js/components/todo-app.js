@@ -7,6 +7,21 @@ function getTodoState() {
   };
 }
 
+function shallowClone(obj) {
+  if(typeof obj === 'object') {
+    //call by reference, so creation of new object
+    //and transfer of the properties
+    var result = {};
+    Object.keys(obj).forEach(function(key) {
+      result[key] = obj[key];
+    });
+    return result;
+  } else {
+    //call by value
+    return obj;
+  }
+}
+
 Polymer({
   is: 'flux-todo-app',
   properties: {},
@@ -19,8 +34,7 @@ Polymer({
   },
   _mixIn: function(obj) {
     Object.keys(obj).forEach(function(key) {
-      //TODO obj[key] has to be cloned
-      this.set(key, obj[key]);
+      this.set(key, shallowClone(obj[key]));
     }.bind(this));
   },
   _onChange: function() {
