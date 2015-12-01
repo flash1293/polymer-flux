@@ -9,7 +9,6 @@
  * TodoActions
  */
 
-var AppDispatcher = require('../dispatcher/AppDispatcher');
 var TodoConstants = require('../constants/TodoConstants');
 
 function dispatchCustomEvent(type, payload) {
@@ -27,10 +26,6 @@ var TodoActions = {
     dispatchCustomEvent(TodoConstants.TODO_CREATE, {
       text: text
     });
-    AppDispatcher.dispatch({
-      actionType: TodoConstants.TODO_CREATE,
-      text: text
-    });
   },
 
   /**
@@ -39,11 +34,6 @@ var TodoActions = {
    */
   updateText: function(id, text) {
     dispatchCustomEvent(TodoConstants.TODO_UPDATE_TEXT, {
-      id: id,
-      text: text
-    });
-    AppDispatcher.dispatch({
-      actionType: TodoConstants.TODO_UPDATE_TEXT,
       id: id,
       text: text
     });
@@ -62,10 +52,6 @@ var TodoActions = {
     dispatchCustomEvent(actionType, {
       id: id,
     });
-    AppDispatcher.dispatch({
-      actionType: actionType,
-      id: id
-    });
   },
 
   /**
@@ -73,9 +59,6 @@ var TodoActions = {
    */
   toggleCompleteAll: function() {
     dispatchCustomEvent(TodoConstants.TODO_TOGGLE_COMPLETE_ALL);
-    AppDispatcher.dispatch({
-      actionType: TodoConstants.TODO_TOGGLE_COMPLETE_ALL
-    });
   },
 
   /**
@@ -85,10 +68,6 @@ var TodoActions = {
     dispatchCustomEvent(TodoConstants.TODO_DESTROY, {
       id: id
     });
-    AppDispatcher.dispatch({
-      actionType: TodoConstants.TODO_DESTROY,
-      id: id
-    });
   },
 
   /**
@@ -96,9 +75,6 @@ var TodoActions = {
    */
   destroyCompleted: function() {
     dispatchCustomEvent(TodoConstants.TODO_DESTROY_COMPLETED);
-    AppDispatcher.dispatch({
-      actionType: TodoConstants.TODO_DESTROY_COMPLETED
-    });
   }
 
 };

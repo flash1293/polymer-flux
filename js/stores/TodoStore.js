@@ -9,7 +9,6 @@
  * TodoStore
  */
 
-var EventEmitter = require('events').EventEmitter;
 var TodoConstants = require('../constants/TodoConstants');
 var assign = require('object-assign');
 
@@ -73,7 +72,7 @@ function destroyCompleted() {
   }
 }
 
-var TodoStore = assign({}, EventEmitter.prototype, {
+var TodoStore = {
 
   /**
    * Tests whether all the remaining TODO items are marked as completed.
@@ -97,23 +96,9 @@ var TodoStore = assign({}, EventEmitter.prototype, {
   },
 
   emitChange: function() {
-    this.emit(CHANGE_EVENT);
+    document.dispatchEvent(new CustomEvent(TodoConstants.TODO_STORE_CHANGE));
   },
-
-  /**
-   * @param {function} callback
-   */
-  addChangeListener: function(callback) {
-    this.on(CHANGE_EVENT, callback);
-  },
-
-  /**
-   * @param {function} callback
-   */
-  removeChangeListener: function(callback) {
-    this.removeListener(CHANGE_EVENT, callback);
-  }
-});
+};
 
 document.addEventListener(TodoConstants.TODO_CREATE, function(ev) {
   var text = ev.detail.text.trim();

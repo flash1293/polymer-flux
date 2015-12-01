@@ -1,4 +1,5 @@
 var TodoStore = require('../stores/TodoStore');
+var TodoConstants = require('../constants/TodoConstants');
 
 function getTodoState() {
   return {
@@ -26,11 +27,11 @@ Polymer({
   is: 'flux-todo-app',
   properties: {},
   attached: function() {
-    TodoStore.addChangeListener(this._onChange.bind(this));
+    document.addEventListener(TodoConstants.TODO_STORE_CHANGE, this._onChange.bind(this));
     this._mixIn(getTodoState());
   },
   detached: function() {
-    TodoStore.removeChangeListener(this._onChange.bind(this));
+    document.removeEventListener(TodoConstants.TODO_STORE_CHANGE, this._onChange.bind(this));
   },
   _mixIn: function(obj) {
     Object.keys(obj).forEach(function(key) {
