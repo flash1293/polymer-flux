@@ -5,7 +5,8 @@ Polymer({
   properties: {
     todo: {
       type: Object,
-      reflectToAttribute: true
+      reflectToAttribute: true,
+      observer: '_todoChanged'
     }
   },
   isEditing: false,
@@ -27,7 +28,7 @@ Polymer({
     TodoActions.destroy(this.todo.id);
   },
   
-  classNames: function(complete,isEditing) {
-    return ((complete ? 'completed' : '') + ' ' + (isEditing? 'editing' : '')).trim();
+  _todoChanged: function(todo) {
+    this.set('classNames', ((todo.complete ? 'completed' : '') + ' ' + (this.isEditing? 'editing' : '')).trim());
   }
 });
