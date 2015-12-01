@@ -6,10 +6,13 @@ Polymer({
     todo: {
       type: Object,
       reflectToAttribute: true,
-      observer: '_todoChanged'
+      observer: '_visibleStateChanged'
+    },
+    isEditing: {
+      type: Boolean,
+      observer: '_visibleStateChanged'
     }
   },
-  isEditing: false,
   
   _onToggleComplete: function() {
     TodoActions.toggleComplete(this.todo);
@@ -28,7 +31,7 @@ Polymer({
     TodoActions.destroy(this.todo.id);
   },
   
-  _todoChanged: function(todo) {
-    this.set('classNames', ((todo.complete ? 'completed' : '') + ' ' + (this.isEditing? 'editing' : '')).trim());
+  _visibleStateChanged: function() {
+    this.set('classNames', ((this.todo.complete ? 'completed' : '') + ' ' + (this.isEditing? 'editing' : '')).trim());
   }
 });
