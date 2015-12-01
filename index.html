@@ -3,17 +3,22 @@
   <head>
     <meta charset="utf-8">
     <title>Flux • TodoMVC</title>
-    <link rel="stylesheet" href="todomvc-common/base.css">
-    <link rel="stylesheet" href="css/app.css">
     <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <script>
+      window.Polymer = window.Polymer || {};
+      window.Polymer.dom = 'shadow';
+    </script>
     <link rel="import" href="js/components/footer.html">
     <link rel="import" href="js/components/todo-textinput.html">
     <link rel="import" href="js/components/todo-item.html">
     <link rel="import" href="js/components/header.html">
     <link rel="import" href="js/components/mainsection.html">
     <link rel="import" href="js/components/todo-app.html">
+    
+    <link rel="import" href="styles/shared-styles.html">
   </head>
   <body>
+    <style is="custom-style" include="todo-shared-styles"></style>
     <section id="todoapp">
       <flux-todo-app></flux-todo-app>
     </section>
