@@ -14,6 +14,7 @@
     "browserify": "^12.0.1",
     "envify": "*",
     "jest-cli": "^0.8.0",
+    "polybuild": "^1.0.5",
     "uglify-js": "^2.6.1",
     "vulcanize": "^1.14.0",
     "watchify": "^3.6.1"
@@ -22,7 +23,7 @@
     "start": "watchify -o js/bundle.js -v -d js/app.js",
     "build": "browserify js/app.js | uglifyjs -cm > js/bundle.min.js",
     "test": "jest",
-    "vulcanize": "vulcanize index.html > build.html"
+    "polybuild": "polybuild index.html --maximum-crush"
   },
   "author": "Bill Fisher",
   "browserify": {
