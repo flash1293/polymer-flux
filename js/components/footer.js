@@ -13,9 +13,7 @@ Polymer({
     var total = Object.keys(allTodos).length;
 
     if (total === 0) {
-      this.set('itemsLeft', '');
-      this.set('completed', 0);
-      this.set('itemsLeftPhrase', '');
+      this.set('showFooter', false);
       return;
     }
 
@@ -33,6 +31,7 @@ Polymer({
     itemsLeftPhrase += 'left';
     this.set('itemsLeft', '' + itemsLeft);
     this.set('itemsLeftPhrase', '' + itemsLeftPhrase);
+    this.set('showFooter', true);
   },
   handleCompleteClick: function() {
     TodoActions.destroyCompleted();
