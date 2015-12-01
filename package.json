@@ -15,12 +15,14 @@
     "envify": "*",
     "jest-cli": "^0.8.0",
     "uglify-js": "^2.6.1",
+    "vulcanize": "^1.14.0",
     "watchify": "^3.6.1"
   },
   "scripts": {
     "start": "watchify -o js/bundle.js -v -d js/app.js",
     "build": "browserify . -t [envify --NODE_ENV production] | uglifyjs -cm > js/bundle.min.js",
-    "test": "jest"
+    "test": "jest",
+    "vulcanize": "vulcanize index.html > build.html"
   },
   "author": "Bill Fisher",
   "browserify": {
