@@ -12,12 +12,21 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var TodoConstants = require('../constants/TodoConstants');
 
+function dispatchCustomEvent(type, payload) {
+  document.dispatchEvent(new CustomEvent(type, {
+    detail: payload
+  }));
+}
+
 var TodoActions = {
 
   /**
    * @param  {string} text
    */
   create: function(text) {
+    dispatchCustomEvent(TodoConstants.TODO_CREATE, {
+      text: text
+    });
     AppDispatcher.dispatch({
       actionType: TodoConstants.TODO_CREATE,
       text: text
@@ -29,6 +38,10 @@ var TodoActions = {
    * @param  {string} text
    */
   updateText: function(id, text) {
+    dispatchCustomEvent(TodoConstants.TODO_UPDATE_TEXT, {
+      id: id,
+      text: text
+    });
     AppDispatcher.dispatch({
       actionType: TodoConstants.TODO_UPDATE_TEXT,
       id: id,
@@ -43,9 +56,12 @@ var TodoActions = {
   toggleComplete: function(todo) {
     var id = todo.id;
     var actionType = todo.complete ?
-        TodoConstants.TODO_UNDO_COMPLETE :
-        TodoConstants.TODO_COMPLETE;
+      TodoConstants.TODO_UNDO_COMPLETE :
+      TodoConstants.TODO_COMPLETE;
 
+    dispatchCustomEvent(actionType, {
+      id: id,
+    });
     AppDispatcher.dispatch({
       actionType: actionType,
       id: id
@@ -56,6 +72,7 @@ var TodoActions = {
    * Mark all ToDos as complete
    */
   toggleCompleteAll: function() {
+    dispatchCustomEvent(TodoConstants.TODO_TOGGLE_COMPLETE_ALL);
     AppDispatcher.dispatch({
       actionType: TodoConstants.TODO_TOGGLE_COMPLETE_ALL
     });
@@ -65,6 +82,9 @@ var TodoActions = {
    * @param  {string} id
    */
   destroy: function(id) {
+    dispatchCustomEvent(TodoConstants.TODO_DESTROY, {
+      id: id
+    });
     AppDispatcher.dispatch({
       actionType: TodoConstants.TODO_DESTROY,
       id: id
@@ -75,6 +95,7 @@ var TodoActions = {
    * Delete all the completed ToDos
    */
   destroyCompleted: function() {
+    dispatchCustomEvent(TodoConstants.TODO_DESTROY_COMPLETED);
     AppDispatcher.dispatch({
       actionType: TodoConstants.TODO_DESTROY_COMPLETED
     });
