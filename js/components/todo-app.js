@@ -26,6 +26,10 @@ function shallowClone(obj) {
 Polymer({
   is: 'flux-todo-app',
   properties: {},
+  /**
+   * because this is an controller-view, it attaches to store-changes and propagates
+   * the changes down to the child-views
+   */
   attached: function() {
     document.addEventListener(TodoConstants.TODO_STORE_CHANGE, this._onChange.bind(this));
     this._mixIn(getTodoState());
