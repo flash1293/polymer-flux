@@ -59,18 +59,18 @@
       	}
       }
     </style>
-    <template is="dom-if" if="{{isNotEmpty(allTodos)}}">
+    <template is="dom-if" if="[[isNotEmpty(allTodos)]]">
       <section id="main">
         <input
           id="toggle-all"
           type="checkbox"
           on-change="_onToggleCompleteAll"
-          checked="{{isChecked(areAllComplete)}}"
+          checked="[[isChecked(areAllComplete)]]"
         />
         <label for="toggle-all">Mark all as complete</label>
         <ul id="todo-list">
-          <template is="dom-repeat" items="{{_toArray(allTodos)}}">
-            <flux-todo-item todo="{{item}}" />
+          <template is="dom-repeat" items="[[_toArray(allTodos)]]">
+            <flux-todo-item todo="[[item]]" />
           </template>
         </ul>
       </section>

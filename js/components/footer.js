@@ -5,7 +5,6 @@ Polymer({
   properties: {
     allTodos: {
       type: Object,
-      reflectToAttribute: true,
       observer: '_todosChanged'
     }
   },

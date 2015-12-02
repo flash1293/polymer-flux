@@ -4,20 +4,17 @@ Polymer({
   is: 'flux-todo-textinput',
   properties: {
     className: {
-      type: String,
-      reflectToAttribute: true
+      type: String
     },
     idValue: {
-      type: String,
-      reflectToAttribute: true
+      type: String
     },
     placeholder: {
-      type: String,
-      reflectToAttribute: true
+      type: String
     },
     value: {
       type: String,
-      reflectToAttribute: true
+      notify: false 
     }
   },
   save: function() {

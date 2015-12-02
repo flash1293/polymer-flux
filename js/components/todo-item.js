@@ -5,7 +5,6 @@ Polymer({
   properties: {
     todo: {
       type: Object,
-      reflectToAttribute: true,
       observer: '_visibleStateChanged'
     },
     isEditing: {

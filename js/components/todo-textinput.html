@@ -19,11 +19,16 @@
       	box-shadow: none;
       }
     </style>
+    <!-- 
+      value has to be bound in the two-way fashion to get the user-input.
+      in the polymer-definition the property is set explicitly as notify:false
+      => the change doesnt get propagated upwards, so its still flux-compatible
+    -->
     <input
       type="text"
-      class$="{{className}}"
-      id="{{idValue}}"
-      placeholder="{{placeholder}}"
+      class$="[[className]]"
+      id="[[idValue]]"
+      placeholder="[[placeholder]]"
       on-blur="save"
       on-keydown="onKeyDown"
       value="{{value::input}}"

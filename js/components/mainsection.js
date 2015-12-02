@@ -3,12 +3,10 @@ Polymer({
   is: 'flux-mainsection',
   properties: {
     allTodos: {
-      type: Object,
-      reflectToAttribute: true
+      type: Object
     },
     areAllComplete: {
-      type: Boolean,
-      reflectToAttribute: true
+      type: Boolean
     }
   },
   _onToggleCompleteAll: function() {
