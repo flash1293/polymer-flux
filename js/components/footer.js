@@ -8,6 +8,7 @@ Polymer({
       observer: '_todosChanged'
     }
   },
+  behaviors: [TodoActions],
   _todosChanged: function(allTodos) {
     var total = Object.keys(allTodos).length;
 
@@ -33,6 +34,6 @@ Polymer({
     this.set('showFooter', true);
   },
   handleCompleteClick: function() {
-    TodoActions.destroyCompleted();
+    this.destroyCompleted();
   }
 });

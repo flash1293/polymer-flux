@@ -12,24 +12,20 @@ Polymer({
       observer: '_visibleStateChanged'
     }
   },
-  
+  behaviors: [TodoActions],
   _onToggleComplete: function() {
-    TodoActions.toggleComplete(this.todo);
+    this.toggleComplete(this.todo);
   },
-
   _onDoubleClick: function() {
     this.set("isEditing", true);
   },
-
   _onSave: function(event, text) {
-    TodoActions.updateText(this.todo.id, text);
+    this.updateText(this.todo.id, text);
     this.set("isEditing", false);
   },
-
   _onDestroyClick: function() {
-    TodoActions.destroy(this.todo.id);
+    this.destroy(this.todo.id);
   },
-  
   _visibleStateChanged: function() {
     this.set('classNames', ((this.todo.complete ? 'completed' : '') + ' ' + (this.isEditing? 'editing' : '')).trim());
   }

@@ -9,8 +9,9 @@ Polymer({
       type: Boolean
     }
   },
+  behaviors: [TodoActions],
   _onToggleCompleteAll: function() {
-    TodoActions.toggleCompleteAll();
+    this.toggleCompleteAll();
   },
   isChecked: function(areAllComplete) {
     return (areAllComplete ? 'checked' : '');

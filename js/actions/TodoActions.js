@@ -11,19 +11,13 @@
 
 var TodoConstants = require('../constants/TodoConstants');
 
-function dispatchCustomEvent(type, payload) {
-  document.dispatchEvent(new CustomEvent(type, {
-    detail: payload
-  }));
-}
-
 var TodoActions = {
 
   /**
    * @param  {string} text
    */
   create: function(text) {
-    dispatchCustomEvent(TodoConstants.TODO_CREATE, {
+    this.fire(TodoConstants.TODO_CREATE, {
       text: text
     });
   },
@@ -33,7 +27,7 @@ var TodoActions = {
    * @param  {string} text
    */
   updateText: function(id, text) {
-    dispatchCustomEvent(TodoConstants.TODO_UPDATE_TEXT, {
+    this.fire(TodoConstants.TODO_UPDATE_TEXT, {
       id: id,
       text: text
     });
@@ -49,7 +43,7 @@ var TodoActions = {
       TodoConstants.TODO_UNDO_COMPLETE :
       TodoConstants.TODO_COMPLETE;
 
-    dispatchCustomEvent(actionType, {
+    this.fire(actionType, {
       id: id,
     });
   },
@@ -58,14 +52,14 @@ var TodoActions = {
    * Mark all ToDos as complete
    */
   toggleCompleteAll: function() {
-    dispatchCustomEvent(TodoConstants.TODO_TOGGLE_COMPLETE_ALL);
+    this.fire(TodoConstants.TODO_TOGGLE_COMPLETE_ALL);
   },
 
   /**
    * @param  {string} id
    */
   destroy: function(id) {
-    dispatchCustomEvent(TodoConstants.TODO_DESTROY, {
+    this.fire(TodoConstants.TODO_DESTROY, {
       id: id
     });
   },
@@ -74,7 +68,7 @@ var TodoActions = {
    * Delete all the completed ToDos
    */
   destroyCompleted: function() {
-    dispatchCustomEvent(TodoConstants.TODO_DESTROY_COMPLETED);
+    this.fire(TodoConstants.TODO_DESTROY_COMPLETED);
   }
 
 };
